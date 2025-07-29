@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Confirm Delete</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"/>
 </head>
-<body>
-    <form action="" method='POST'>
-        {% csrf_token %}
-        Are you sure you want to delete this item?
-        <input type="submit" value="YES">
+<body class="bg-light d-flex align-items-center justify-content-center" style="height: 100vh;">
+  <div class="card p-4 shadow-sm" style="max-width: 400px; width: 100%;">
+    <h5 class="mb-3">Confirm Deletion</h5>
+    <form method="POST">
+      {% csrf_token %}
+      <p>Are you sure you want to delete this item?</p>
+      <div class="d-flex justify-content-between">
+        <a href="{% url 'index' %}" class="btn btn-secondary">Cancel</a>
+        <input type="submit" value="Yes, Delete" class="btn btn-danger" />
+      </div>
     </form>
+  </div>
 </body>
 </html>
