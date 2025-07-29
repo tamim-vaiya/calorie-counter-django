@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 class Food(models.Model):
 
@@ -11,3 +11,7 @@ class Food(models.Model):
     protein = models.FloatField()
     fats = models.FloatField()
     calories = models.IntegerField()
+
+class Consume(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    consumed_food = models.ForeignKey(Food, on_delete=models.CASCADE)
