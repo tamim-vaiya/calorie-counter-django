@@ -13,4 +13,5 @@ def index(request):
 
     else:
         foods = Food.objects.all()
-    return render(request, 'myapp/index.html', {'foods': foods})
+    consumed_by_user = Consume.objects.filter(user = request.user)
+    return render(request, 'myapp/index.html', {'foods': foods, 'consumed_by_user': consumed_by_user})
