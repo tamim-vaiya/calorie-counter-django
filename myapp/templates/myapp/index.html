@@ -62,6 +62,7 @@
                                     <th>Protein (g)</th>
                                     <th>Fats (g)</th>
                                     <th>Calories (Kcal)</th>
+                                    <th>Remove Item</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -72,6 +73,7 @@
                                         <td>{{ c.consumed_food.protein }}</td>
                                         <td>{{ c.consumed_food.fats }}</td>
                                         <td>{{ c.consumed_food.calories }}</td>
+                                        <td><a class="btn btn-danger" href="{% url 'delete' c.id %}">Remove</a></td>
                                     </tr>
                                 {% endfor %}
                                     <tr>
@@ -80,6 +82,7 @@
                                         <td id="total_protein"></td>
                                         <td id="total_fats"></td>
                                         <td id="total_calories"></td>
+                                        <td>X</td>
                                     </tr>
                             </tbody>
                         </table>
@@ -128,7 +131,7 @@
         new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: ['Carbs ' + carbsPer + ' %', 'Protein', 'Fats', 'Calories'],
+                labels: ['Carbs ' + carbsPer + '%', 'Protein ' + proteinPer + '%', 'Fats ' + fatsPer + '%', 'Calories' + caloriesPer +'%'],
                 datasets: [{
                     label: 'Macronutrients (g)',
                     data: [carbsPer, proteinPer, fatsPer, caloriesPer],
