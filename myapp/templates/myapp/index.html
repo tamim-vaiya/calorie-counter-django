@@ -21,6 +21,15 @@
 
         <h1 class="mb-4">Daily Food Tracker</h1>
 
+        <div class="row mb-4">
+            <div class="col-md-9 offset-1">
+                <h4>Calorie Goal</h4>
+                <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style='width: 0%;' aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+
         <!-- Form -->
         <form method="POST" class="row g-3 mb-5">
             {% csrf_token %}
@@ -96,9 +105,12 @@
         calories += parseFloat(table.rows[i].cells[4].innerHTML);
         calories = Math.round(calories);
     }
-    document.getElementById('total_carbs').innerHTML = carbs;
-    document.getElementById('total_protein').innerHTML = protein;
-    document.getElementById('total_fats').innerHTML = fats;
-    document.getElementById('total_calories').innerHTML = calories;
+    document.getElementById('total_carbs').innerHTML = '<b>' + carbs + '(g)</b>';
+    document.getElementById('total_protein').innerHTML = '<b>' + protein + '(g)</b>';
+    document.getElementById('total_fats').innerHTML = '<b>' + fats + '(g)</b>';
+    document.getElementById('total_calories').innerHTML = '<b>' + calories + '(Kcal)</b>';
+
+    var calPer = (calories/2000) * 100;
+    document.getElementsByClassName("progress-bar")[0].setAttribute("style", "width:" + calPer + "%");
 </script>
 </html>
